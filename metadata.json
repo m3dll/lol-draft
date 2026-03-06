@@ -1,0 +1,5 @@
+{
+  "name": "LOL DRAFT",
+  "description": "A League of Legends themed tool to randomly assign 10 players into two teams with randomized roles.",
+  "requestFramePermissions": []
+}

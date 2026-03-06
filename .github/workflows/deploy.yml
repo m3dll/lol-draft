@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Déclenche le workflow à chaque push sur la branche main
+  # Si votre branche principale s'appelle "master", remplacez "main" par "master"
+  push:
+    branches: [ main ]
+  # Permet de lancer le workflow manuellement depuis l'onglet Actions
+  workflow_dispatch:
+
+# Définit les permissions nécessaires pour déployer sur GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Permet d'annuler les déploiements en cours si un nouveau push est effectué
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Vite place les fichiers compilés dans le dossier "dist"
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

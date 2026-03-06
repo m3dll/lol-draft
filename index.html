@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚔️</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Générateur de Faille</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Beaufort+for+LOL:wght@400;700&family=Spiegel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --lol-gold-1: #c89b3c;
+        --lol-gold-2: #f0e6d2;
+        --lol-gold-3: #c8aa6e;
+        --lol-gold-4: #785a28;
+        --lol-blue-1: #0a1428;
+        --lol-blue-2: #091428;
+        --lol-blue-3: #1e2328;
+        --lol-blue-4: #010a13;
+        --lol-blue-5: #005a82;
+        --lol-blue-6: #0ac8b9;
+        --lol-red-1: #c8aa6e;
+        --lol-red-2: #e33237;
+        --lol-red-3: #7e1618;
+      }
+      body {
+        font-family: 'Spiegel', sans-serif;
+        background-color: var(--lol-blue-4);
+        color: var(--lol-gold-2);
+        background-image: radial-gradient(circle at 50% 0%, var(--lol-blue-2) 0%, var(--lol-blue-4) 70%);
+        min-height: 100vh;
+      }
+      h1, h2, h3, .title-font {
+        font-family: 'Beaufort for LOL', serif;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .hextech-border {
+        position: relative;
+        border: 1px solid var(--lol-gold-4);
+        background: rgba(10, 20, 40, 0.8);
+      }
+      .hextech-border::before, .hextech-border::after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border: 1px solid var(--lol-gold-1);
+      }
+      .hextech-border::before {
+        top: -4px;
+        left: -4px;
+        background: var(--lol-blue-4);
+      }
+      .hextech-border::after {
+        bottom: -4px;
+        right: -4px;
+        background: var(--lol-blue-4);
+      }
+      
+      /* Scrollbar styling for that client feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--lol-blue-3); 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--lol-gold-4); 
+        border: 1px solid var(--lol-blue-4);
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--lol-gold-1); 
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
